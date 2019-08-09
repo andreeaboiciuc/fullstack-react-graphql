@@ -27,6 +27,6 @@ class MyApp extends App {
         );
     }
 }
-import { from } from 'zen-observable';
+//import { from } from 'zen-observable';
 
 export default withData(MyApp);
