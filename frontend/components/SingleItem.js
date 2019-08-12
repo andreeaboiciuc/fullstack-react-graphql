@@ -49,7 +49,7 @@ class SingleItem extends Component {
               {({error, loading, data}) => {
                 if(error) return <Error error={error} />;
                 if(loading) return <p>Loading...</p>;
-                if(!data.item) return <p>No item founf for
+                if(!data.item) return <p>No item found for
                 {this.props.id} </p>;
                 const item = data.item;
                 return <SingleItemStyles>

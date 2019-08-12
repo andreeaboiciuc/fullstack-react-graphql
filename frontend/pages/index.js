@@ -1,9 +1,9 @@
 import Items from '../components/Items';
-import SingleItem from '../components/SingleItem';
+//import SingleItem from '../components/SingleItem';
 
 const Home = props => (
   <div>
-    <SingleItem id={props.query.id} />
+    <Items page={parseFloat(props.query.page) || 1} />
   </div>
 );
 
