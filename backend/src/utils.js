@@ -1,10 +1,10 @@
 //  user
-//{
-//  name: 'andre',
-//  permissions; ['ADMIN', 'ITEMUPDATE']
-//}
+{
+  name: 'andre',
+  permissions; ['ADMIN', 'ITEMUPDATE']
+}
 
-//['PERMISSIONUPDATE', 'ADMIN']
+['PERMISSIONUPDATE', 'ADMIN']
 
 
 function hasPermission(user, permissionsNeeded) {
