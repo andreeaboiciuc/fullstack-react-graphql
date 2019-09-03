@@ -23,6 +23,7 @@ const CREATE_ITEM_MUTATION = gql`
             price: $price
             image: $image
             largeImage: $largeImage
+            
         ) {
             id
         }
