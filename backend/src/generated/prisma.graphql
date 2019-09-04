@@ -1532,14 +1532,11 @@ type PageInfo {
 
   """When paginating backwards, are there more items?"""
   hasPreviousPage: Boolean!
-
   """When paginating backwards, the cursor to continue."""
   startCursor: String
-
   """When paginating forwards, the cursor to continue."""
   endCursor: String
 }
-
 enum Permission {
   ADMIN
   USER
@@ -1548,7 +1545,6 @@ enum Permission {
   ITEMDELETE
   PERMISSIONUPDATE
 }
-
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   cartItems(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem]!
@@ -1565,14 +1561,12 @@ type Query {
   itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
   orderItemsConnection(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderItemConnection!
   ordersConnection(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OrderConnection!
-
   """Fetches an object given its ID"""
   node(
     """The ID of an object"""
     id: ID!
   ): Node
 }
-
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   cartItem(where: CartItemSubscriptionWhereInput): CartItemSubscriptionPayload
@@ -1580,7 +1574,6 @@ type Subscription {
   orderItem(where: OrderItemSubscriptionWhereInput): OrderItemSubscriptionPayload
   order(where: OrderSubscriptionWhereInput): OrderSubscriptionPayload
 }
-
 type User implements Node {
   id: ID!
   email: String!
@@ -1594,17 +1587,14 @@ type User implements Node {
   #updatedAt: DateTime!
   permissions: [Permission!]
 }
-
 """A connection to a list of items."""
 type UserConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
-
   """A list of edges."""
   edges: [UserEdge]!
   aggregate: AggregateUser!
 }
-
 input UserCreateInput {
   email: String!
   password: String!
@@ -1615,26 +1605,21 @@ input UserCreateInput {
   orders: OrderCreateManyWithoutUserInput
   cart: CartItemCreateManyWithoutUserInput
 }
-
 input UserCreateOneInput {
   create: UserCreateInput
   connect: UserWhereUniqueInput
 }
-
 input UserCreateOneWithoutCartInput {
   create: UserCreateWithoutCartInput
   connect: UserWhereUniqueInput
 }
-
 input UserCreateOneWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput
   connect: UserWhereUniqueInput
 }
-
 input UserCreatepermissionsInput {
   set: [Permission!]
 }
-
 input UserCreateWithoutCartInput {
   email: String!
   password: String!
@@ -1644,7 +1629,6 @@ input UserCreateWithoutCartInput {
   permissions: UserCreatepermissionsInput
   orders: OrderCreateManyWithoutUserInput
 }
-
 input UserCreateWithoutOrdersInput {
   email: String!
   password: String!
@@ -1654,16 +1638,13 @@ input UserCreateWithoutOrdersInput {
   permissions: UserCreatepermissionsInput
   cart: CartItemCreateManyWithoutUserInput
 }
-
 """An edge in a connection."""
 type UserEdge {
   """The item at the end of the edge."""
   node: User!
-
   """A cursor for use in pagination."""
   cursor: String!
 }
-
 enum UserOrderByInput {
   id_ASC
   id_DESC
@@ -1682,7 +1663,6 @@ enum UserOrderByInput {
   updatedAt_ASC
   updatedAt_DESC
 }
-
 type UserPreviousValues {
   id: ID!
   email: String!
@@ -1694,46 +1674,37 @@ type UserPreviousValues {
   updatedAt: DateTime!
   permissions: [Permission!]
 }
-
 type UserSubscriptionPayload {
   mutation: MutationType!
   node: User
   updatedFields: [String!]
   previousValues: UserPreviousValues
 }
-
 input UserSubscriptionWhereInput {
   """Logical AND on all given filters."""
   AND: [UserSubscriptionWhereInput!]
-
   """Logical OR on all given filters."""
   OR: [UserSubscriptionWhereInput!]
-
   """Logical NOT on all given filters combined by AND."""
   NOT: [UserSubscriptionWhereInput!]
-
   """
   The subscription event gets dispatched when it's listed in mutation_in
   """
   mutation_in: [MutationType!]
-
   """
   The subscription event gets only dispatched when one of the updated fields names is included in this list
   """
   updatedFields_contains: String
-
   """
   The subscription event gets only dispatched when all of the field names included in this list have been updated
   """
   updatedFields_contains_every: [String!]
-
   """
   The subscription event gets only dispatched when some of the field names included in this list have been updated
   """
   updatedFields_contains_some: [String!]
   node: UserWhereInput
 }
-
 input UserUpdateDataInput {
   email: String
   password: String
@@ -1744,7 +1715,6 @@ input UserUpdateDataInput {
   orders: OrderUpdateManyWithoutUserInput
   cart: CartItemUpdateManyWithoutUserInput
 }
-
 input UserUpdateInput {
   email: String
   password: String
@@ -1755,7 +1725,6 @@ input UserUpdateInput {
   orders: OrderUpdateManyWithoutUserInput
   cart: CartItemUpdateManyWithoutUserInput
 }
-
 input UserUpdateOneInput {
   create: UserCreateInput
   connect: UserWhereUniqueInput
@@ -1763,7 +1732,6 @@ input UserUpdateOneInput {
   update: UserUpdateDataInput
   upsert: UserUpsertNestedInput
 }
-
 input UserUpdateOneWithoutCartInput {
   create: UserCreateWithoutCartInput
   connect: UserWhereUniqueInput
@@ -1771,7 +1739,6 @@ input UserUpdateOneWithoutCartInput {
   update: UserUpdateWithoutCartDataInput
   upsert: UserUpsertWithoutCartInput
 }
-
 input UserUpdateOneWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput
   connect: UserWhereUniqueInput
@@ -1779,11 +1746,9 @@ input UserUpdateOneWithoutOrdersInput {
   update: UserUpdateWithoutOrdersDataInput
   upsert: UserUpsertWithoutOrdersInput
 }
-
 input UserUpdatepermissionsInput {
   set: [Permission!]
 }
-
 input UserUpdateWithoutCartDataInput {
   email: String
   password: String
@@ -1793,7 +1758,6 @@ input UserUpdateWithoutCartDataInput {
   permissions: UserUpdatepermissionsInput
   orders: OrderUpdateManyWithoutUserInput
 }
-
 input UserUpdateWithoutOrdersDataInput {
   email: String
   password: String
@@ -1803,313 +1767,215 @@ input UserUpdateWithoutOrdersDataInput {
   permissions: UserUpdatepermissionsInput
   cart: CartItemUpdateManyWithoutUserInput
 }
-
 input UserUpsertNestedInput {
   update: UserUpdateDataInput!
   create: UserCreateInput!
 }
-
 input UserUpsertWithoutCartInput {
   update: UserUpdateWithoutCartDataInput!
   create: UserCreateWithoutCartInput!
 }
-
 input UserUpsertWithoutOrdersInput {
   update: UserUpdateWithoutOrdersDataInput!
   create: UserCreateWithoutOrdersInput!
 }
-
 input UserWhereInput {
   """Logical AND on all given filters."""
   AND: [UserWhereInput!]
-
   """Logical OR on all given filters."""
   OR: [UserWhereInput!]
-
   """Logical NOT on all given filters combined by AND."""
   NOT: [UserWhereInput!]
   id: ID
-
   """All values that are not equal to given value."""
   id_not: ID
-
   """All values that are contained in given list."""
   id_in: [ID!]
-
   """All values that are not contained in given list."""
   id_not_in: [ID!]
-
   """All values less than the given value."""
   id_lt: ID
-
   """All values less than or equal the given value."""
   id_lte: ID
-
   """All values greater than the given value."""
   id_gt: ID
-
   """All values greater than or equal the given value."""
   id_gte: ID
-
   """All values containing the given string."""
   id_contains: ID
-
   """All values not containing the given string."""
   id_not_contains: ID
-
   """All values starting with the given string."""
   id_starts_with: ID
-
   """All values not starting with the given string."""
   id_not_starts_with: ID
-
   """All values ending with the given string."""
   id_ends_with: ID
-
   """All values not ending with the given string."""
   id_not_ends_with: ID
   email: String
-
   """All values that are not equal to given value."""
   email_not: String
-
   """All values that are contained in given list."""
   email_in: [String!]
-
   """All values that are not contained in given list."""
   email_not_in: [String!]
-
   """All values less than the given value."""
   email_lt: String
-
   """All values less than or equal the given value."""
   email_lte: String
-
   """All values greater than the given value."""
   email_gt: String
-
   """All values greater than or equal the given value."""
   email_gte: String
-
   """All values containing the given string."""
   email_contains: String
-
   """All values not containing the given string."""
   email_not_contains: String
-
   """All values starting with the given string."""
   email_starts_with: String
-
   """All values not starting with the given string."""
   email_not_starts_with: String
-
   """All values ending with the given string."""
   email_ends_with: String
-
   """All values not ending with the given string."""
   email_not_ends_with: String
   password: String
-
   """All values that are not equal to given value."""
   password_not: String
-
   """All values that are contained in given list."""
   password_in: [String!]
-
   """All values that are not contained in given list."""
   password_not_in: [String!]
-
   """All values less than the given value."""
   password_lt: String
-
   """All values less than or equal the given value."""
   password_lte: String
-
   """All values greater than the given value."""
   password_gt: String
-
   """All values greater than or equal the given value."""
   password_gte: String
-
   """All values containing the given string."""
   password_contains: String
-
   """All values not containing the given string."""
   password_not_contains: String
-
   """All values starting with the given string."""
   password_starts_with: String
-
   """All values not starting with the given string."""
   password_not_starts_with: String
-
   """All values ending with the given string."""
   password_ends_with: String
-
   """All values not ending with the given string."""
   password_not_ends_with: String
   name: String
-
   """All values that are not equal to given value."""
   name_not: String
-
   """All values that are contained in given list."""
   name_in: [String!]
-
   """All values that are not contained in given list."""
   name_not_in: [String!]
-
   """All values less than the given value."""
   name_lt: String
-
   """All values less than or equal the given value."""
   name_lte: String
-
   """All values greater than the given value."""
   name_gt: String
-
   """All values greater than or equal the given value."""
   name_gte: String
-
   """All values containing the given string."""
   name_contains: String
-
   """All values not containing the given string."""
   name_not_contains: String
-
   """All values starting with the given string."""
   name_starts_with: String
-
   """All values not starting with the given string."""
   name_not_starts_with: String
-
   """All values ending with the given string."""
   name_ends_with: String
-
   """All values not ending with the given string."""
   name_not_ends_with: String
   resetToken: String
-
   """All values that are not equal to given value."""
   resetToken_not: String
-
   """All values that are contained in given list."""
   resetToken_in: [String!]
-
   """All values that are not contained in given list."""
   resetToken_not_in: [String!]
-
   """All values less than the given value."""
   resetToken_lt: String
-
   """All values less than or equal the given value."""
   resetToken_lte: String
-
   """All values greater than the given value."""
   resetToken_gt: String
-
   """All values greater than or equal the given value."""
   resetToken_gte: String
-
   """All values containing the given string."""
   resetToken_contains: String
-
   """All values not containing the given string."""
   resetToken_not_contains: String
-
   """All values starting with the given string."""
   resetToken_starts_with: String
-
   """All values not starting with the given string."""
   resetToken_not_starts_with: String
-
   """All values ending with the given string."""
   resetToken_ends_with: String
-
   """All values not ending with the given string."""
   resetToken_not_ends_with: String
   resetTokenExpiry: String
-
   """All values that are not equal to given value."""
   resetTokenExpiry_not: String
-
   """All values that are contained in given list."""
   resetTokenExpiry_in: [String!]
-
   """All values that are not contained in given list."""
   resetTokenExpiry_not_in: [String!]
-
   """All values less than the given value."""
   resetTokenExpiry_lt: String
-
   """All values less than or equal the given value."""
   resetTokenExpiry_lte: String
-
   """All values greater than the given value."""
   resetTokenExpiry_gt: String
-
   """All values greater than or equal the given value."""
   resetTokenExpiry_gte: String
-
   """All values containing the given string."""
   resetTokenExpiry_contains: String
-
   """All values not containing the given string."""
   resetTokenExpiry_not_contains: String
-
   """All values starting with the given string."""
   resetTokenExpiry_starts_with: String
-
   """All values not starting with the given string."""
   resetTokenExpiry_not_starts_with: String
-
   """All values ending with the given string."""
   resetTokenExpiry_ends_with: String
-
   """All values not ending with the given string."""
   resetTokenExpiry_not_ends_with: String
   createdAt: DateTime
-
   """All values that are not equal to given value."""
   createdAt_not: DateTime
-
   """All values that are contained in given list."""
   createdAt_in: [DateTime!]
-
   """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
-
   """All values less than the given value."""
   createdAt_lt: DateTime
-
   """All values less than or equal the given value."""
   createdAt_lte: DateTime
-
   """All values greater than the given value."""
   createdAt_gt: DateTime
-
   """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
-
   """All values that are not equal to given value."""
   updatedAt_not: DateTime
-
   """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
-
   """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
-
   """All values less than the given value."""
   updatedAt_lt: DateTime
-
   """All values less than or equal the given value."""
   updatedAt_lte: DateTime
-
   """All values greater than the given value."""
   updatedAt_gt: DateTime
-
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
   orders_every: OrderWhereInput
@@ -2119,7 +1985,6 @@ input UserWhereInput {
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput
 }
-
 input UserWhereUniqueInput {
   id: ID
   email: String
