@@ -6,7 +6,6 @@ const { transport, makeANiceEmail } = require('../mail');
 const { hasPermission } = require('../utils');
 const stripe = require('../stripe');
 
-
 const Mutations = {
   async createItem(parent, args, ctx, info) {
     if (!ctx.request.userId) {
@@ -132,7 +131,7 @@ const Mutations = {
     });
     // 3. Email them that reset token
     const mailRes = await transport.sendMail({
-      from: 'a.andreea@yahoo.com',
+      from: 'wes@wesbos.com',
       to: user.email,
       subject: 'Your Password Reset Token',
       html: makeANiceEmail(`Your Password Reset Token is here!

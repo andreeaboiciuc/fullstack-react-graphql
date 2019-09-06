@@ -1,5 +1,5 @@
 import React from 'react';
-import Downshift from 'downshift';
+import Downshift, { resetIdCounter } from 'downshift';
 import Router from 'next/router';
 import { ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -32,9 +32,7 @@ class AutoComplete extends React.Component {
   };
   onChange = debounce(async (e, client) => {
     console.log('Searching...');
-    // turn loading on
     this.setState({ loading: true });
-    // Manually query apollo client
     const res = await client.query({
       query: SEARCH_ITEMS_QUERY,
       variables: { searchTerm: e.target.value },
@@ -45,6 +43,7 @@ class AutoComplete extends React.Component {
     });
   }, 350);
   render() {
+    resetIdCounter();
     return (
       <SearchStyles>
         <Downshift onChange={routeToItem} itemToString={item => (item === null ? '' : item.title)}>
